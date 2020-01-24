@@ -1,0 +1,18 @@
+targets:
+  $default:
+    builders:
+      sass_builder:
+        generate_for:
+          exclude:
+            - "**/*.anime.scss"
+
+builders:
+  anime_scss_builder:
+    import: "package:css_pendulum/builders.dart"
+    builder_factories: ["animeScssBuilder"]
+    auto_apply: root_package
+    build_extensions:
+      .anime.scss: 
+        - .animated.scss
+    runs_before:
+      - sass_builder
