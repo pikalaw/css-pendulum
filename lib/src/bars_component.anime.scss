@@ -1,0 +1,29 @@
+:host {
+  display: flex;
+  justify-content: center;
+}
+
+.stage {
+  background: hsl(100, 70%, 80%);
+}
+
+.bar {
+  animation: 3s alternate infinite bar-bounce;
+}
+
+@keyframes bar-bounce {
+  from {
+    y: 100%;
+    height: calc(100% - attr(x));
+    animation-timing-function: ease-in;
+  }
+  50% {
+    y: 50%;
+    height: calc(100% - attr(x));
+    animation-timing-function: ease-out;
+  }
+  to {
+    y: 0%;
+    height: calc(100% - attr(x));
+  }
+}

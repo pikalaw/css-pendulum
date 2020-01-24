@@ -1,5 +1,7 @@
 import 'package:angular/angular.dart';
+import 'package:angular_forms/angular_forms.dart';
 
+import 'src/bars_component.dart';
 import 'src/ouch_component.dart';
 
 // AngularDart info: https://angulardart.dev
@@ -9,7 +11,11 @@ import 'src/ouch_component.dart';
   selector: 'my-app',
   styleUrls: ['app_component.css'],
   templateUrl: 'app_component.html',
-  directives: [OuchComponent],
+  directives: [BarsComponent, OuchComponent, formDirectives],
 )
 class AppComponent {
+  static const defaultNumBars = 10;
+  int userNumBars = defaultNumBars;
+
+  int get numBars => userNumBars ?? 0;
 }
