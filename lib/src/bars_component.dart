@@ -5,6 +5,7 @@ import 'package:angular/angular.dart';
   styleUrls: ['bars_component.animated.css'],
   templateUrl: 'bars_component.html',
   directives: [coreDirectives],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class BarsComponent implements AfterChanges {
   @Input()

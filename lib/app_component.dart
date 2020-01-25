@@ -12,6 +12,7 @@ import 'src/ouch_component.dart';
   styleUrls: ['app_component.css'],
   templateUrl: 'app_component.html',
   directives: [BarsComponent, OuchComponent, formDirectives],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class AppComponent {
   static const defaultNumBars = 10;
