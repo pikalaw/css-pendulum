@@ -24,12 +24,13 @@ bars {
 .num-bar-message {
   display: flex;
   flex-flow: row wrap;
+  align-items: baseline;
   width: 70%;
-  padding-top: 1em;
+  padding-top: 1rem;
 
   input[type="number"] {
     flex: 0 1 auto;
-    width: unset;
+    width: 6rem;
   }
 
   label {
