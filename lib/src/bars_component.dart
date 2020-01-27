@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:angular/angular.dart';
 
 @Component(
@@ -8,6 +10,9 @@ import 'package:angular/angular.dart';
   changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class BarsComponent implements AfterChanges {
+  HtmlElement element;
+  BarsComponent(this.element);
+
   @Input()
   int numBars;
 

@@ -3,13 +3,13 @@ CSS Pendulum
 </header>
 <body>
 <ouch></ouch>
-<bars [numBars]="numBars"></bars>
+<bars [numBars]="numBars" [ngStyle]="barStyle"></bars>
 <div class="form-group num-bar-message">
   <input type="number" class="form-control" placeholder="How many bars?"
          [(ngModel)]="userNumBars"
          #userNumBarsInput="ngForm"
-         [class.is-valid]="userNumBarsInput.valid"
-         [class.is-invalid]="!userNumBarsInput.valid"
+         [class.is-valid]="validNumBars(userNumBarsInput)"
+         [class.is-invalid]="!validNumBars(userNumBarsInput)"
          required>
   <label for="userNumBars">
     {{numBars <=0 ?
@@ -18,9 +18,16 @@ CSS Pendulum
         "bars are" :
         "bar is"}} displaying!
   </label>
-  <div [hidden]="userNumBarsInput.valid || userNumBarsInput.pristine"
-    class="invalid-feedback">
+  <div [hidden]="validNumBars(userNumBarsInput)" class="invalid-feedback">
     Number should be > 0.
   </div>
+  <label class="bar-color-label" for="barColor">Bar Color</label>
+  <select class="bar-color form-control" [(ngModel)]="barStyle['--bar-color']"
+      id="barColor">
+    <option value="red">red</option>
+    <option value="green">green</option>
+    <option value="blue">blue</option>
+    <option value="black">black</option>
+  </select>
 </div>
 </body>

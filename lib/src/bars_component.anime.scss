@@ -1,6 +1,7 @@
 :host {
   display: flex;
   justify-content: center;
+  --bar-color: purple;
 }
 
 .stage {
@@ -9,6 +10,8 @@
 
 .bar {
   animation: 3s alternate infinite bar-bounce;
+  stroke: var(--bar-color);
+  fill: var(--bar-color);
 }
 
 @keyframes bar-bounce {

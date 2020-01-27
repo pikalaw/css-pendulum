@@ -25,13 +25,20 @@ bars {
   display: flex;
   flex-flow: row wrap;
   align-items: baseline;
-  width: 70%;
+  position: relative;
+  width: 100%;
   padding-top: 1rem;
 
   input[type="number"] {
     flex: 0 1 auto;
-    width: 9rem;
+    // TODO(pikalaw): Set the width without hardcoding a value, i.e. compute
+    // the width of the placeholder string.
+    width: 10rem;
     text-align: right;
+  }
+
+  select {
+    width: auto;
   }
 
   label {
@@ -44,6 +51,19 @@ bars {
   }
 
   .invalid-feedback {
-    flex: 0 0 100%;
+    position: absolute;
+    // TODO(pikalaw): Set the top without hardcoding a value, i.e. finding out
+    // what the height of the previous row is.
+    top: 3rem;
+  }
+
+  .bar-color-label {
+    flex: 0 0 auto;
+    margin-left: auto;
+
+    &::after {
+      content: " ";
+      white-space: pre;
+    }
   }
 }

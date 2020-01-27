@@ -11,12 +11,19 @@ import 'src/ouch_component.dart';
   selector: 'my-app',
   styleUrls: ['app_component.css'],
   templateUrl: 'app_component.html',
-  directives: [BarsComponent, OuchComponent, formDirectives],
+  directives: [BarsComponent, OuchComponent, coreDirectives, formDirectives],
   changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class AppComponent {
   static const defaultNumBars = 10;
   int userNumBars = defaultNumBars;
-
   int get numBars => userNumBars ?? 0;
+
+  var barStyle = {
+    '--bar-color': 'black',
+  };
+
+  bool validNumBars(numBarInput) {
+    return numBarInput.valid && numBarInput.value > 0;
+  }
 }
