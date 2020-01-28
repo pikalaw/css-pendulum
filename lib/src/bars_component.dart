@@ -32,9 +32,17 @@ class BarsComponent implements AfterChanges {
       barWidth = 0.0;
       return;
     }
-    final barSpace = 100.0 / numBars;
-    final xBegin = (barSpace * .2) / 2;
-    barXStarts = [for(var x=xBegin; x<100; x+=barSpace) x];
-    barWidth = barSpace * .8;
+
+    // The gap width as a fraction of the bar's width.
+    const gap = .2;
+
+    // (numBars+1)*gap*barWidth + numBars*barWidth = 100;
+    // ((numBars+1)*gap + numBars)*barWidth = 100;
+    barWidth = 100.0 / ((numBars+1)*gap + numBars);
+
+    final gapWidth = gap*barWidth;
+    final barInterval = barWidth + gapWidth;
+    final xBegin = gapWidth;
+    barXStarts = [for(var x=xBegin, i=0; i<numBars; i++, x+=barInterval) x];
   }
 }
