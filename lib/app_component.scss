@@ -31,9 +31,7 @@ bars {
 
   input[type="number"] {
     flex: 0 1 auto;
-    // TODO(pikalaw): Set the width without hardcoding a value, i.e. compute
-    // the width of the placeholder string.
-    width: 10rem;
+    width: calc(5ch + 2ch);
     text-align: right;
   }
 

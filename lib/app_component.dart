@@ -22,8 +22,4 @@ class AppComponent {
   var barStyle = {
     '--bar-color': 'black',
   };
-
-  bool validNumBars(numBarInput) {
-    return numBarInput.valid && numBarInput.value > 0;
-  }
 }

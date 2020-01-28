@@ -1,7 +1,9 @@
 :host {
+  // Public custom properties.
+  --bar-color: purple;
+
   display: flex;
   justify-content: center;
-  --bar-color: purple;
 }
 
 .stage {

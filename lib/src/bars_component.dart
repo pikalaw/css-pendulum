@@ -17,9 +17,9 @@ class BarsComponent implements AfterChanges {
   int numBars;
 
   // x starting position of the bars in percentages.
-  List<num> barXStarts;
+  var barXStarts = <num>[];
   // width of each bar.
-  num barWidth;
+  var barWidth = 0.0;
 
   @override
   void ngAfterChanges() {
@@ -27,6 +27,11 @@ class BarsComponent implements AfterChanges {
   }
 
   void _setXStartAndWidths() {
+    if ((numBars??-1) <= 0) {
+      barXStarts = [];
+      barWidth = 0.0;
+      return;
+    }
     final barSpace = 100.0 / numBars;
     final xBegin = (barSpace * .2) / 2;
     barXStarts = [for(var x=xBegin; x<100; x+=barSpace) x];
