@@ -22,7 +22,7 @@ bars {
 }
 
 .num-bar-message {
-  --input-width: calc(5ch + 2ch);
+  --input-width: calc(7ch + 2ch);
 
   display: flex;
   flex-flow: row wrap;
@@ -39,7 +39,7 @@ bars {
 
   .bar-color-input {
     width: var(--input-width);
-    height: 2rem;
+    height: 100%;
   }
 
   label[for="userNumBars"] {
