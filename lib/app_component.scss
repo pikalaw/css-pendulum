@@ -22,6 +22,8 @@ bars {
 }
 
 .num-bar-message {
+  --input-width: calc(5ch + 2ch);
+
   display: flex;
   flex-flow: row wrap;
   align-items: baseline;
@@ -31,12 +33,13 @@ bars {
 
   .num-bar-input {
     flex: 0 1 auto;
-    width: calc(5ch + 2ch);
+    width: var(--input-width);
     text-align: right;
   }
 
   .bar-color-input {
-    width: auto;
+    width: var(--input-width);
+    height: 2rem;
   }
 
   label[for="userNumBars"] {
