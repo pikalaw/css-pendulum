@@ -29,17 +29,17 @@ bars {
   width: 100%;
   padding-top: 1rem;
 
-  input[type="number"] {
+  .num-bar-input {
     flex: 0 1 auto;
     width: calc(5ch + 2ch);
     text-align: right;
   }
 
-  select {
+  .bar-color-input {
     width: auto;
   }
 
-  label {
+  label[for="userNumBars"] {
     flex: 1 0 auto;
 
     &::before {
@@ -55,7 +55,7 @@ bars {
     top: 3rem;
   }
 
-  .bar-color-label {
+  label[for="barColor"] {
     flex: 0 0 auto;
     margin-left: auto;
 

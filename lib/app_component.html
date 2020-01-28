@@ -5,8 +5,8 @@ CSS Pendulum
 <ouch></ouch>
 <bars [numBars]="numBars" [ngStyle]="barStyle"></bars>
 <div class="form-group num-bar-message">
-  <input type="number" class="form-control" [(ngModel)]="userNumBars"
-         #userNumBarsInput="ngForm"
+  <input class="num-bar-input form-control" type="number"
+         [(ngModel)]="userNumBars" #userNumBarsInput="ngForm"
          [class.is-valid]="userNumBarsInput.valid"
          [class.is-invalid]="!userNumBarsInput.valid"
          required>
@@ -21,8 +21,8 @@ CSS Pendulum
     Give me a number!
   </div>
   <label class="bar-color-label" for="barColor">Bar Color</label>
-  <select class="bar-color form-control" [(ngModel)]="barStyle['--bar-color']"
-      id="barColor">
+  <select class="bar-color-input form-control"
+      [(ngModel)]="barStyle['--bar-color']" id="barColor">
     <option value="red">red</option>
     <option value="green">green</option>
     <option value="blue">blue</option>
