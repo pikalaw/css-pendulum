@@ -1,4 +1,3 @@
-import 'dart:html';
 import 'package:angular/angular.dart';
 
 @Component(
@@ -9,6 +8,4 @@ import 'package:angular/angular.dart';
   changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class BouncingBallComponent {
-  HtmlElement element;
-  BouncingBallComponent(this.element);
 }

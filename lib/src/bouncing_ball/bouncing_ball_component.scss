@@ -1,0 +1,25 @@
+@use './bouncing_ball_keyframes';
+
+.aspect-ratio-outside {
+  width: 100%;
+  padding-top: 60%;
+  position: relative;
+}
+
+.aspect-ratio-inside {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border: 1px solid black;
+}
+
+.ball-icon {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 120px;
+  height: 120px;
+}

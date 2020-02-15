@@ -1,24 +1,4 @@
-:host {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  width: 80%;
-  margin: 0 auto;
-}
-
-%block {
+.header {
   width: 100%;
-}
-
-header {
-  @extend %block;
   text-align: center;
-}
-
-main {
-  @extend %block;
-}
-
-article {
-  @extend %block;
 }
