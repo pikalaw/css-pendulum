@@ -1,15 +1,10 @@
 $ball-size: 100px !default;
 
-@keyframes bouncing_ball {
-  from {
-    top: $ball-size;
-  }
-  to {
-    top: 100%;
-  }
+.just-a-class {
+  top: $ball-size;
 }
 
-@keyframes squeezing_ball {
+@keyframes bouncing_ball {
   from {
     top: 0;
   }

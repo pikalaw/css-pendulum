@@ -23,9 +23,9 @@
 
 .ball-icon {
   position: absolute;
-  top: var(--ball-size);
+  top: 0;
   left: 50%;
-  transform: translate(-50%, -100%);
+  transform: translate(-50%, 0);
   width: var(--ball-size); 
   height:  var(--ball-size);
   animation: bouncing_ball 3s infinite alternate;
