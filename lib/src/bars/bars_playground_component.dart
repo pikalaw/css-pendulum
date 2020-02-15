@@ -11,7 +11,7 @@ import 'bars_component.dart';
   changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class BarsPlaygroundComponent {
-  static const _defaultNumBars = 10;
+  static const _defaultNumBars = 3;
   int userNumBars = _defaultNumBars;
   int get numBars => userNumBars ?? 0;
 

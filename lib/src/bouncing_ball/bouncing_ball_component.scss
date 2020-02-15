@@ -1,8 +1,14 @@
-@use './bouncing_ball_keyframes';
+@use './bouncing_ball_keyframes' with (
+  $ball-size: var(--ball-size),
+);
+
+:host {
+  --ball-size: 120px;
+}
 
 .aspect-ratio-outside {
   width: 100%;
-  padding-top: 60%;
+  padding-top: 50%;
   position: relative;
 }
 
@@ -20,6 +26,7 @@
   top: 0;
   left: 50%;
   transform: translate(-50%, 0);
-  width: 120px;
-  height: 120px;
+  width: var(--ball-size); 
+  height:  var(--ball-size);
+  animation: bouncing_ball 3s infinite alternate;
 }

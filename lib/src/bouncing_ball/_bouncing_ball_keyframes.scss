@@ -1,8 +1,14 @@
+$ball-size: 100px !default;
+
+.just-a-class {
+  top: $ball-size;
+}
+
 @keyframes bouncing_ball {
   from {
-    width: 0;
+    top: 0;
   }
   to {
-    width: 100%;
+    top: calc(100% - #{$ball-size});
   }
 }
