@@ -4,7 +4,7 @@ import 'package:angular/angular.dart';
 
 @Component(
   selector: 'bars',
-  styleUrls: ['bars_component.animated.css'],
+  styleUrls: ['bars_component.css'],
   templateUrl: 'bars_component.html',
   directives: [coreDirectives],
   changeDetection: ChangeDetectionStrategy.OnPush,

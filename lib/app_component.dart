@@ -1,8 +1,8 @@
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 
-import 'src/bars_component.dart';
-import 'src/ouch_component.dart';
+import 'src/bars/bars_component.dart';
+import 'src/ouch/ouch_component.dart';
 
 // AngularDart info: https://angulardart.dev
 // Components info: https://angulardart.dev/components
