@@ -1,8 +1,6 @@
 import 'package:angular/angular.dart';
-import 'package:angular_forms/angular_forms.dart';
 
 import 'src/bars/bars_playground_component.dart';
-import 'src/bouncing_ball/bouncing_ball_component.dart';
 import 'src/ouch/ouch_component.dart';
 
 // AngularDart info: https://angulardart.dev
@@ -10,10 +8,12 @@ import 'src/ouch/ouch_component.dart';
 
 @Component(
   selector: 'my-app',
-  styleUrls: ['app_component.css'],
   templateUrl: 'app_component.html',
-  directives: [BarsPlaygroundComponent, BouncingBallComponent, OuchComponent,
-      coreDirectives, formDirectives],
+  styleUrls: [
+    'package:angular_components/app_layout/layout.scss.css',
+    'app_component.css',
+  ],
+  directives: [BarsPlaygroundComponent, OuchComponent, coreDirectives],
   changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class AppComponent {

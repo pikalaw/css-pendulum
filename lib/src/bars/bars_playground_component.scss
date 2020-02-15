@@ -1,0 +1,50 @@
+bars {
+  width: 100%;
+}
+
+.num-bar-message {
+  --input-width: calc(7ch + 2ch);
+
+  display: flex;
+  flex-flow: row wrap;
+  align-items: baseline;
+  position: relative;
+  width: 100%;
+  padding-top: 1rem;
+
+  .num-bar-input {
+    flex: 0 1 auto;
+    width: var(--input-width);
+    text-align: right;
+  }
+
+  .bar-color-input {
+    width: var(--input-width);
+  }
+
+  label[for="userNumBars"] {
+    flex: 1 0 auto;
+
+    &::before {
+      content: " ";
+      white-space: pre;
+    }
+  }
+
+  .invalid-feedback {
+    position: absolute;
+    // TODO(pikalaw): Set the top without hardcoding a value, i.e. finding out
+    // what the height of the previous row is.
+    top: 3rem;
+  }
+
+  label[for="barColor"] {
+    flex: 0 0 auto;
+    margin-left: auto;
+
+    &::after {
+      content: " ";
+      white-space: pre;
+    }
+  }
+}

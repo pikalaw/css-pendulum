@@ -1,0 +1,21 @@
+<bars [numBars]="numBars" [ngStyle]="barStyle"></bars>
+<div class="form-group num-bar-message">
+  <input class="num-bar-input form-control" type="number"
+         [(ngModel)]="userNumBars" #userNumBarsInput="ngForm"
+         [class.is-valid]="userNumBarsInput.valid"
+         [class.is-invalid]="!userNumBarsInput.valid"
+         required>
+  <label for="userNumBars">
+    {{numBars <=0 ?
+      "No bar is" :
+      numBars > 1 ?
+        "bars are" :
+        "bar is"}} displaying!
+  </label>
+  <div [hidden]="userNumBarsInput.valid" class="invalid-feedback">
+    Give me a number!
+  </div>
+  <label class="bar-color-label" for="barColor">Bar Color</label>
+  <input class="bar-color-input form-control" type="color"
+      [(ngModel)]="barStyle['--bar-color']" id="barColor">
+</div>
