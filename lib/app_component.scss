@@ -1,70 +1,24 @@
 :host {
-    /* This is equivalent of the 'body' selector of a page. */
-}
-
-header {
-  text-align: center;
-}
-
-body {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   width: 80%;
+  margin: 0 auto;
 }
 
-ouch {
+%block {
   width: 100%;
 }
 
-bars {
-  width: 100%;
+header {
+  @extend %block;
+  text-align: center;
 }
 
-.num-bar-message {
-  --input-width: calc(7ch + 2ch);
+main {
+  @extend %block;
+}
 
-  display: flex;
-  flex-flow: row wrap;
-  align-items: baseline;
-  position: relative;
-  width: 100%;
-  padding-top: 1rem;
-
-  .num-bar-input {
-    flex: 0 1 auto;
-    width: var(--input-width);
-    text-align: right;
-  }
-
-  .bar-color-input {
-    width: var(--input-width);
-    height: 100%;
-  }
-
-  label[for="userNumBars"] {
-    flex: 1 0 auto;
-
-    &::before {
-      content: " ";
-      white-space: pre;
-    }
-  }
-
-  .invalid-feedback {
-    position: absolute;
-    // TODO(pikalaw): Set the top without hardcoding a value, i.e. finding out
-    // what the height of the previous row is.
-    top: 3rem;
-  }
-
-  label[for="barColor"] {
-    flex: 0 0 auto;
-    margin-left: auto;
-
-    &::after {
-      content: " ";
-      white-space: pre;
-    }
-  }
+article {
+  @extend %block;
 }
