@@ -1,14 +1,31 @@
-$ball-size: 100px !default;
-
-.just-a-class {
-  top: $ball-size;
-}
+$ball-full-size: 100px !default;
+$ball-squeezed-size: 10px !default;
 
 @keyframes bouncing_ball {
   from {
     top: 0;
+    height: $ball-full-size;
+    animation-timing-function: cubic-bezier(.375, 0, .75, .5);
+  }
+  70% {
+    top: calc(100% - #{$ball-full-size});
+    height: $ball-full-size;
+    animation-timing-function: cubic-bezier(.25, .5, .625, 1);
   }
   to {
-    top: calc(100% - #{$ball-size});
+    top: calc(100% - #{$ball-squeezed-size});
+    height: $ball-squeezed-size;
+  }
+}
+
+@keyframes squeezing_ball {
+  from {
+    top: calc(100% - #{$ball-full-size});
+    height: $ball-full-size;
+    animation-timing-function: cubic-bezier(.25, .5, .625, 1);
+  }
+  to {
+    top: calc(100% - #{$ball-squeezed-size});
+    height: $ball-squeezed-size;
   }
 }

@@ -1,2 +1,30 @@
 :host {
 }
+
+.balls {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+bouncing-ball {
+  flex: 0 0 25%;
+  border: 1px solid black;
+
+  &:nth-child(1) {
+    --ball-full-size: 30px;
+    --ball-squeezed-size: 10px;
+    --time-to-fall: 1s;
+  }
+  &:nth-child(2) {
+    --ball-full-size: 40px;
+    --ball-squeezed-size: 20px;
+    --time-to-fall: 2s;
+  }
+  &:nth-child(3) {
+    --ball-full-size: 50px;
+    --ball-squeezed-size: 30px;
+    --time-to-fall: 3s;
+  }
+}
+

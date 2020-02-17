@@ -1,14 +1,17 @@
 @use './bouncing_ball_keyframes' with (
-  $ball-size: var(--ball-size),
+  $ball-full-size: var(--ball-full-size),
+  $ball-squeezed-size: var(--ball-squeezed-size),
 );
 
 :host {
-  --ball-size: 120px;
+  --ball-full-size: 120px;
+  --ball-squeezed-size: 10px;
+  --time-to-fall: 1s;
 }
 
 .aspect-ratio-outside {
   width: 100%;
-  padding-top: 50%;
+  padding-top: 200%;
   position: relative;
 }
 
@@ -18,15 +21,18 @@
   right: 0;
   bottom: 0;
   left: 0;
-  border: 1px solid black;
 }
 
 .ball-icon {
   position: absolute;
+
+  // Anchor is top center of the icon.
   top: 0;
   left: 50%;
   transform: translate(-50%, 0);
-  width: var(--ball-size); 
-  height:  var(--ball-size);
-  animation: bouncing_ball 3s infinite alternate;
+
+  width: var(--ball-full-size); 
+  height:  var(--ball-full-size);
+
+  animation: bouncing_ball var(--time-to-fall) infinite alternate;
 }
