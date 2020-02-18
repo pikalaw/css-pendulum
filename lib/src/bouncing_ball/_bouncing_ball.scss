@@ -4,22 +4,40 @@
 // It would pin the object at one spot because [top] takes precedence over
 // [bottom], which this mixin uses to bounce the object, when [height] is
 // also set.
-// You can set [bottom] to use a different starting height, which would override
-// the default starting height at the top of the container.
-// However, you must set [bottom] *after* @include-ing the mixin, e.g.
 //
-// .my-bouncing-ball {
-//   @include bounce.bouncing(...);
-//   bottom: var(--my-custom-starting-height-to-bounce-from);
+// Example:
+//
+// ```html
+// <div class="bouncing-box">
+//   <svg class="boucing-ball">...</svg>
+// </div>
+// ```
+//
+// ```scss
+// .bouncing-box {
+//   // Bouncing object needs a positioned container to bounce in.
+//   position: relative;
 // }
+// .bouncing-ball {
+//   --ball-size: 100px;
+//   @include bounce.bouncing(
+//     $time-to-fall: 3s;
+//     $ball-initial-height: var(--ball-size);
+//     $ball-squeezed-height: calc(var(--ball-size) / 2);
+//   );
+//   width: var(--ball-size);
+//   height: var(--ball-size);
+// }
+// ```
 @mixin bouncing(
   $time-to-fall,
   $ball-initial-height,
   $ball-squeezed-height,
 ) {
   position: absolute;
+
+  // Unsetting this to ensure the ball's top would not be pinned down.
   top: unset;
-  bottom: calc(100% - #{$ball-initial-height});
 
   --ball-initial-height: #{$ball-initial-height};
   --ball-squeezed-height: #{$ball-squeezed-height};

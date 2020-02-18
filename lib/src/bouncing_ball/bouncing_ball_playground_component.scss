@@ -28,7 +28,6 @@
   );
   width: var(--size);
   left: calc(50% - var(--size) / 2);
-  bottom: 75%;
 }
 
 .ball-3 {
@@ -40,5 +39,4 @@
   );
   width: var(--size);
   right: 10%;
-  bottom: calc(50% - var(--size) / 2);
 }
