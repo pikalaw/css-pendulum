@@ -1,15 +1,14 @@
 @use './bouncing_ball_keyframes';
 
+// Do not set [top] attribute when using this mixin.
+// It would pin the object at one spot because [top] takes precedence over
+// [bottom], which this mixin uses to bounce the object, when [height] is
+// also set.
 @mixin bouncing(
-  $initial-height: 10%,
   $time-to-fall: 1s,
   $ball-squeezed-size: 30%,
 ) {
   position: absolute;
-
-  bottom: calc(100% - #{$initial-height});
-  left: 50%;
-  transform: translate(-50%, 0);
 
   --ball-squeezed-size: #{$ball-squeezed-size};
   animation: bouncing_ball $time-to-fall infinite alternate;
