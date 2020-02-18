@@ -1,13 +1,16 @@
 @keyframes bouncing_ball {
   from {
+    // Bottom is inherited.
+    height: var(--ball-initial-height);
     animation-timing-function: cubic-bezier(.375, 0, .75, .5);
   }
   70% {
     bottom: 0;
+    height: var(--ball-initial-height);
     animation-timing-function: cubic-bezier(.25, .5, .625, 1);
   }
   to {
     bottom: 0;
-    height: var(--ball-squeezed-size);
+    height: var(--ball-squeezed-height);
   }
 }
