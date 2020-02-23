@@ -27,14 +27,9 @@ $host-height-width-ratio: .70;
 }
 
 @function random-color() {
-  $colors: [
-    #F00, #0F0, #00F,
-    #FF0, #F0F, #0FF,
-    #800, #080, #008,
-    #880, #808, #088,
-    #000,
-  ];
-  @return list.nth($colors, math.random(list.length($colors)));
+  @return hsla(
+    random-range(0deg, 360deg), random-range(10%, 90%), random-range(10%, 90%),
+    random-range(0.1, 1));
 }
 
 :host {
@@ -47,6 +42,21 @@ $host-height-width-ratio: .70;
 .bouncing-box {
   position: absolute;
   @include aspect-ratio(var(--ball-full-size), var(--box-height-to-ball-ratio));
+
+  bottom: 0;
+  left: var(--box-left);
+
+  @at-root .bouncing-object {
+    animation: bouncing-object var(--bounce-period) infinite alternate;
+
+    &:after {
+      animation: squeezing-object var(--bounce-period) infinite alternate;
+    }
+  }
+
+  @at-root .bouncing-ball {
+    fill: var(--ball-color);
+  }
 }
 
 .bouncing-object {
@@ -61,33 +71,7 @@ $host-height-width-ratio: .70;
   height: 100%;
 }
 
-@for $i from 1 through 10 {
-  .bouncing-box.id-#{$i} {
-    $ball-full-size: random-range(5%, 20%);
-    --ball-full-size: #{$ball-full-size};
-    --ball-squeezed-full-ratio: #{random-range(.2, .8)};
-    --box-height-to-ball-ratio: #{random-box-ball-ratio($ball-full-size)};
-    --box-left: #{random-range(5%, 95% - $ball-full-size)};
-    --bounce-period: #{random-range(.5s, 3s)};
-
-    bottom: 0;
-    left: var(--box-left);
-
-    @at-root .bouncing-object.id-#{$i} {
-      animation: bouncing-object var(--bounce-period) infinite alternate;
-
-      &:after {
-        animation: squeezing-object var(--bounce-period) infinite alternate;
-      }
-    }
-
-    @at-root .bouncing-ball.id-#{$i} {
-      fill: random-color();
-    }
-  }
-}
-
-$bounce-squeeze-transition-frame-key: 70%;
+$bounce-squeeze-transition-frame-key: 80%;
 
 @keyframes bouncing-object {
   from {
@@ -112,6 +96,18 @@ $bounce-squeeze-transition-frame-key: 70%;
   }
   to {
     padding-bottom: calc(100% * var(--ball-squeezed-full-ratio));
+  }
+}
+
+@for $i from 1 through 20 {
+  .bouncing-box.id-#{$i} {
+    $ball-full-size: random-range(5%, 20%);
+    --ball-full-size: #{$ball-full-size};
+    --ball-squeezed-full-ratio: #{random-range(.2, .8)};
+    --box-height-to-ball-ratio: #{random-box-ball-ratio($ball-full-size)};
+    --box-left: #{random-range(5%, 95% - $ball-full-size)};
+    --bounce-period: #{random-range(.5s, 3s)};
+    --ball-color: #{random-color()};
   }
 }
 

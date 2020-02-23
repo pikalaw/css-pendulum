@@ -8,5 +8,5 @@ import 'package:angular/angular.dart';
   changeDetection: ChangeDetectionStrategy.OnPush,
 )
 class BouncingBallPlaygroundComponent {
-  var ballIndices = [for(var i = 1; i <= 10; i++) i]; 
+  var ballIndices = [for(var i = 1; i <= 30; i++) i]; 
 }
