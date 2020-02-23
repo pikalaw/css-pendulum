@@ -70,11 +70,15 @@ $host-height-width-ratio: .70;
     --box-left: #{random-range(5%, 95% - $ball-full-size)};
     --bounce-period: #{random-range(.5s, 3s)};
 
-    top: 0;
+    bottom: 0;
     left: var(--box-left);
 
     @at-root .bouncing-object.id-#{$i} {
       animation: bouncing-object var(--bounce-period) infinite alternate;
+
+      &:after {
+        animation: squeezing-object var(--bounce-period) infinite alternate;
+      }
     }
 
     @at-root .bouncing-ball.id-#{$i} {
@@ -98,7 +102,7 @@ $bounce-squeeze-transition-frame-key: 70%;
   }
 }
 
-@keyframes squeezing-ball {
+@keyframes squeezing-object {
   from {
     padding-bottom: 100%;
   }
@@ -107,7 +111,7 @@ $bounce-squeeze-transition-frame-key: 70%;
     animation-timing-function: cubic-bezier(.25, .5, .625, 1);
   }
   to {
-    padding-bottom: var(--ball-squeezed-height);
+    padding-bottom: calc(100% * var(--ball-squeezed-full-ratio));
   }
 }
 
