@@ -93,7 +93,7 @@ $bounce-squeeze-transition-frame-key: 80%;
   }
 }
 
-@for $i from 1 through 20 {
+@for $i from 1 through 30 {
   .bouncing-box.id-#{$i} {
     $ball-full-size: random-range(5%, 20%);
     --ball-full-size: #{$ball-full-size};
