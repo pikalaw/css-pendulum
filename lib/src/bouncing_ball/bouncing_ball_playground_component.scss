@@ -1,42 +1,113 @@
-@use '.' as bounce;
+@use 'sass:list';
+@use 'sass:math';
 
-.bounce-box {
+@mixin aspect-ratio($width, $height-width-ratio) {
+  width: $width;
+  &:after {
+    content: "";
+    display: block;
+    padding-bottom: calc(100% * #{$height-width-ratio});
+  }
+}
+
+$host-height-width-ratio: .70;
+
+@function random-range($min, $max) {
+  @return $min + math.random() * ($max - $min);
+}
+
+@function random-box-ball-ratio($ball-size) {
+  $box-height: $host-height-width-ratio * 100%;
+  $box-ball-ratio-min: 1.5;
+  $box-ball-ratio-max: $box-height / $ball-size;
+  @if ($box-ball-ratio-max < $box-ball-ratio-min) {
+    @error "ball #{$ball-size} is too large to fit in box #{$box-height}"
+  }
+  @return random-range($box-ball-ratio_min, $box-ball-ratio-max);    
+}
+
+@function random-color() {
+  $colors: [
+    #F00, #0F0, #00F,
+    #FF0, #F0F, #0FF,
+    #800, #080, #008,
+    #880, #808, #088,
+    #000,
+  ];
+  @return list.nth($colors, math.random(list.length($colors)));
+}
+
+:host {
+  @include aspect-ratio(100%, $host-height-width-ratio);
   position: relative;
-  width: 100%;
-  height: 300px;
   border-top: 1px dashed gray;
   border-bottom: 1px solid black;
 }
 
-.ball-1 {
-  --size: 30px;
-  @include bounce.bouncing(
-    $time-to-fall: 1s,
-    $ball-initial-height: var(--size),
-    $ball-squeezed-height: 10px,
-  );
-  width: var(--size);
-  left: 10%;
+.bouncing-box {
+  position: absolute;
+  @include aspect-ratio(var(--ball-full-size), var(--box-height-to-ball-ratio));
 }
 
-.ball-2 {
-  --size: 40px;
-  @include bounce.bouncing(
-    $time-to-fall: 2s,
-    $ball-initial-height: var(--size),
-    $ball-squeezed-height: 20px,
-  );
-  width: var(--size);
-  left: calc(50% - var(--size) / 2);
+.bouncing-object {
+  position: absolute;
+  @include aspect-ratio(100%, 1);
 }
 
-.ball-3 {
-  --size: 50px;
-  @include bounce.bouncing(
-    $time-to-fall: 3s,
-    $ball-initial-height: var(--size),
-    $ball-squeezed-height: 20px,
-  );
-  width: var(--size);
-  right: 10%;
+.bouncing-ball {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
+
+@for $i from 1 through 10 {
+  .bouncing-box.id-#{$i} {
+    $ball-full-size: random-range(5%, 20%);
+    --ball-full-size: #{$ball-full-size};
+    --ball-squeezed-full-ratio: #{random-range(.2, .8)};
+    --box-height-to-ball-ratio: #{random-box-ball-ratio($ball-full-size)};
+    --box-left: #{random-range(5%, 95% - $ball-full-size)};
+    --bounce-period: #{random-range(.5s, 3s)};
+
+    top: 0;
+    left: var(--box-left);
+
+    @at-root .bouncing-object.id-#{$i} {
+      animation: bouncing-object var(--bounce-period) infinite alternate;
+    }
+
+    @at-root .bouncing-ball.id-#{$i} {
+      fill: random-color();
+    }
+  }
+}
+
+$bounce-squeeze-transition-frame-key: 70%;
+
+@keyframes bouncing-object {
+  from {
+    bottom: calc(100% - 100% / var(--box-height-to-ball-ratio));
+    animation-timing-function: cubic-bezier(.375, 0, .75, .5);
+  }
+  #{$bounce-squeeze-transition-frame-key} {
+    bottom: 0;
+  }
+  to {
+    bottom: 0;
+  }
+}
+
+@keyframes squeezing-ball {
+  from {
+    padding-bottom: 100%;
+  }
+  #{$bounce-squeeze-transition-frame-key} {
+    padding-bottom: 100%;
+    animation-timing-function: cubic-bezier(.25, .5, .625, 1);
+  }
+  to {
+    padding-bottom: var(--ball-squeezed-height);
+  }
+}
+

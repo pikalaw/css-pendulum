@@ -1,4 +1,4 @@
-@keyframes bouncing_ball {
+@keyframes bouncing-ball {
   from {
     bottom: calc(100% - var(--ball-initial-height));
     height: var(--ball-initial-height);
@@ -12,5 +12,14 @@
   to {
     bottom: 0;
     height: var(--ball-squeezed-height);
+  }
+}
+
+@keyframes landing-strike {
+  from {
+    border-bottom: 0;
+  }
+  to {
+    border-bottom: 1px solid black;
   }
 }

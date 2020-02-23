@@ -20,7 +20,7 @@
 // }
 // .bouncing-ball {
 //   --ball-size: 100px;
-//   @include bounce.bouncing(
+//   @include bounce.bouncing-ball(
 //     $time-to-fall: 3s;
 //     $ball-initial-height: var(--ball-size);
 //     $ball-squeezed-height: calc(var(--ball-size) / 2);
@@ -29,7 +29,7 @@
 //   height: var(--ball-size);
 // }
 // ```
-@mixin bouncing(
+@mixin bouncing-ball(
   $time-to-fall,
   $ball-initial-height,
   $ball-squeezed-height,
@@ -41,5 +41,7 @@
 
   --ball-initial-height: #{$ball-initial-height};
   --ball-squeezed-height: #{$ball-squeezed-height};
-  animation: bouncing_ball $time-to-fall infinite alternate;
+  animation:
+    bouncing-ball $time-to-fall infinite alternate;
+//    landing-strike $time-to-fall infinite alternate;
 }
